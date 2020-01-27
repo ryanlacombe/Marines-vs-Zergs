@@ -46,9 +46,9 @@ int main()
 
 	cout << "A squad of marines approaches a swarm of Zerglings and opens fire! The Zerglings charge!" << endl;
 	// Attack each other until only one team is left alive
-	while (marineAlive() || zerglingAlive(swarm)) // If anyone is left alive to fight . . .
+	while (marineAlive(squad) || zerglingAlive(swarm)) // If anyone is left alive to fight . . .
 	{
-		if (marineAlive()) // if there's at least one marine alive
+		if (marineAlive(squad)) // if there's at least one marine alive
 		{
 			for (size_t i = 0; i < squadSize; i++) // go through the squad
 			{
@@ -83,7 +83,7 @@ int main()
 
 	// Once one team is completely eliminated, the fight ends and one team wins
 	cout << "The fight is over. ";
-	if (marineAlive())
+	if (marineAlive(squad))
 	{
 		cout << "The Marines win." << endl;
 	} else 
@@ -93,7 +93,7 @@ int main()
 }
 
 // Is there a Marine Alive?
-bool marineAlive()
+bool marineAlive(vector<Marine> squad)
 {
 	return squad.size() > 0;
 }
